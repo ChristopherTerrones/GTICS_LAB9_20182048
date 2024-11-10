@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <title>TELEMEAL</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row align-items-center my-4">
+                <div class="col text-center">
+                    <h2 class="mb-0 mx-auto">TELEMEAL</h2>
+                </div>
+                <div class="col-auto ml-auto">
+                    <a href="/telemeal/favoritos" class="btn btn-success">List my favorites</a>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="input-group">
+                    <input type="text" placeholder="Search for a meal" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div th:each="categoria : ${listaCategorias}" class="col-md-4 mb-4 d-flex">
+                    <div class="card p-4">
+                        <h5 class="card-title text-center" th:text="${categoria.strCategory}"></h5>
+                        <img th:src="${categoria.strCategoryThumb}" class="card-img-top" th:alt="${categoria.strCategory}">
+                        <div class="card-body">
+                            <p class="card-text text-center" th:text="${#strings.abbreviate(categoria.strCategoryDescription, 100)}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
